@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
-})
+import { AuthenticationService } from './_services';
+import { User, Role } from './_models';
+
+@Component({ selector: 'app-root', templateUrl: 'app.component.html' })
 export class AppComponent {
-  title = 'PsychoStudentRecommendations';
+    currentUser: User;
+
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+    get isAdmin() {
+        return this.currentUser && this.currentUser.role === Role.Admin;
+    }
+
+    get isCandidate() {
+        return this.currentUser && this.currentUser.role === Role.Candidate;
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    }
 }
