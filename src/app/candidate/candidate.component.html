@@ -3,44 +3,65 @@
     <form [formGroup]="requestForm" (ngSubmit)="submit()">
         <div class="form-horizontal">
             <div formArrayName="academies" *ngFor="let academy of academiesFormArray.controls; let i = index">
-                <div class="row form-group">
+                <div [formGroup]="academy" class="row form-group">
                     <div class="col-md-1">
-                        <input id="" type="checkbox" [formControlName]="i">
+                        <input id="" type="checkbox" formControlName="isSelected">
+                        <!-- <p>{{academy.value}}</p> -->
                     </div>
-                    <label for="fullName" class="control-label col-md-3"> {{academyList[i].name}} </label>
+                    <label for="" class="control-label col-md-3"> {{academyList[i].name}} </label>
 
-
-                    <!-- <label for="program" class="control-label col-md-2">מגמה </label> -->
                     <div class="col-md-3">
-                        <select [id]="academyList[i].id" formControlName="{{academyList[i].id}}" class="form-control">
-                            <option style="display:none" value="">Choose an option</option>
-                            <option *ngFor="let p of programList" [value]="p.id">{{p.name}}</option>
-                          </select>
-                    </div>
-                </div>
+                        <select class="form-control" formControlName="program" (change)="programSelected($event.target.value)">
+                             <option style="display:none" value="">בחירה </option>
+                             <option *ngFor="let c of filteredprogramList(academyList[i].id)"  [disabled]="!academy.value" [value]="c.id">{{c.name}}</option></select>
 
+                        <!-- <option style="display:none" value="">Choose an option </option> -->
+
+                        <!-- <option *ngFor="let p of filteredprogramList(academyList[i].id)" [value]="p.id">{{p.name}}</option> -->
+
+
+                    </div>
+
+                </div>
             </div>
+            <!-- <label for="program" class="control-label col-md-2">מגמה </label> -->
+
+
             <div class="form-group row">
                 <label for="fullName" class="control-label col-md-2">שם פרטי + משפחה </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="fullName" id="fullName" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['fullName'].errors!=null"> שדה נדרש </p>
+                        <p *ngIf="requestForm.controls['fullName'].errors?.pattern!=null">יש להקליד אותיות עבריות בלבד</p>
+                    </div>
                 </div>
+
                 <label for="idNum" class="control-label col-md-2">תעודת זהות </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="idNum" id="idNum" class="form-control" />
+                    <p *ngIf="requestForm.controls['idNum'].errors!=null"> שדה נדרש </p>
+                    <p *ngIf="requestForm.controls['idNum'].errors?.pattern!=null">יש להקליד מספרים בלבד</p>
+                    <p *ngIf="requestForm.controls['idNum'].errors?.minlength!=null"> נדרשים לפחות 6 תווים </p>
+
                 </div>
-                <div class="col-md-5">
-                </div>
+
             </div>
 
             <div class="form-group row">
                 <label for="address" class="control-label col-md-2">כתובת </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="address" id="address" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['address'].errors!=null"> שדה נדרש </p>
+                    </div>
                 </div>
                 <label for="zipCode" class="control-label col-md-2">מיקוד </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="zipCode" id="zipCode" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['zipCode'].errors!=null"> שדה נדרש </p>
+                    </div>
                 </div>
                 <div class="col-md-5">
                 </div>
@@ -49,6 +70,10 @@
                 <label for="email" class="control-label col-md-2">דואר אלקטרוני </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="email" id="email" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['email'].errors!=null"> שדה נדרש </p>
+                        <p *ngIf="requestForm.controls['email'].errors?.email!=null"> כתובת דוא"ל אינה תקינה </p>
+                    </div>
                 </div>
                 <div class="col-md-5">
                 </div>
@@ -58,11 +83,24 @@
                 <label for="phoneNumberP" class="control-label col-md-2">טלפון </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="phoneNumberP" id="phoneNumberP" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['phoneNumberP'].errors?.required"> שדה נדרש </p>
+                        <p *ngIf="requestForm.controls['phoneNumberP'].errors?.pattern!=null">יש להקליד מספרים בלבד</p>
+                        <p *ngIf="requestForm.controls['phoneNumberP'].errors?.minlength!=null"> נדרשים לפחות 9 תווים </p>
+                    </div>
                 </div>
+
+
+
 
                 <label for="phoneNumberS" class="control-label col-md-2">טלפון נוסף</label>
                 <div class="col-md-4">
                     <input type="text" formControlName="phoneNumberS" id="phoneNumberS" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['phoneNumberS'].errors!=null"> שדה נדרש </p>
+                        <p *ngIf="requestForm.controls['phoneNumberS'].errors?.pattern!=null">יש להקליד מספרים בלבד</p>
+                        <p *ngIf="requestForm.controls['phoneNumberS'].errors?.minlength!=null"> נדרשים לפחות 9 תווים </p>
+                    </div>
                 </div>
                 <div class="col-md-5">
                 </div>
@@ -71,6 +109,9 @@
                 <label for="BAMajorIn" class="control-label col-md-2">תואר B.A ב </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="BAMajorIn" id="BAMajorIn" class="form-control" />
+                    <div class="col-md-4">
+                        <p *ngIf="requestForm.controls['BAMajorIn'].errors!=null"> שדה נדרש </p>
+                    </div>
                 </div>
                 <div class="col-md-5">
                 </div>
@@ -79,6 +120,9 @@
                 <label for="university" class="control-label col-md-2">האוניברסיטה שבה אני לומד/למדתי </label>
                 <div class="col-md-4">
                     <input type="text" formControlName="university" id="university" class="form-control" />
+                    <div class="col-md-4">
+                        <div class="error" *ngIf="requestForm.controls['university'].errors!=null"> שדה נדרש </div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                 </div>
@@ -87,6 +131,7 @@
                 <div class="col-md-2">
 
                     <input type="radio" class="radio-control" id="isGraduated1" value="true" name="isGraduated" formControlName="isGraduated">
+
 
 
                     <label for="isGraduated1" class="control-label ">שנת סיום תואר </label>

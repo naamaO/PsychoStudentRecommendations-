@@ -1,4 +1,5 @@
 import { Role } from "./role";
+import { Student } from './student';
 import { User } from './user';
 
 export class Academy {
@@ -13,10 +14,10 @@ export class Academy {
     }
 }
 export class Program {
-    id: number;
-    name: string;
-    academyId: number;
-    constructor(public data: { id: number, name: string, academyId: number }){}
+    // id: number;
+    // name: string;
+    // academyId: number;
+    constructor(public id: number,public name: string,public academyId: number ){}
 }
 export class Recommender {
     fullName: string;
@@ -24,8 +25,9 @@ export class Recommender {
 }
 
 export class RequestRecommendation {
-    candidate: User;
-    academyList: Academy[];
-    program: Program;
-    recommender: Recommender[];
+   public candidate: Student;
+  public academyList: Academy[];
+  public program: Program[];
+  public recommender: Recommender[];
+   constructor(){}
 }
