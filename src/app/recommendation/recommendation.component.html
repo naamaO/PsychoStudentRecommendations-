@@ -1,1 +1,254 @@
-<p>recommendation works!</p>
+<div class="container-fluid">
+    <form [formGroup]="recommmendationForm" (ngSubmit)="submit()">
+        <div class="form-horizontal">
+            <h1 class="form-group row col-md-12">מעריך/ה יקר/ה</h1>
+            <p class="form-group row col-md-12"> מר/ת הציג/ה מועמדות ללימודי תואר שני בפסיכולוגיה באוניברסיטה שמך צויין כמי שיכול להעריך אותו/ה, נודה לך אם תואיל/י למלא שאלון הערכה זה אשר יסייע לנו בהחלטות על קבלת המועמד/ת
+
+            </p>
+
+            <div class="form-group row">
+                <label for="IntroductoryTime" class="control-label col-md-2">כמה זמן הינך מכיר/ה את המועמד? </label>
+                <div class="col-md-4">
+                    <input type="text" formControlName="IntroductoryTime" id="IntroductoryTime" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="BackgroundEvaluation" class="control-label col-md-2">הרקע להיכרות, על איזה נתונים מסתמכת הערכתך? </label>
+                <div class="col-md-4">
+                    <!-- <input type="text" formControlName="BackgroundEvaluation" id="BackgroundEvaluation" class="form-control" /> -->
+                    <textarea class="form-control"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group row " formGroupName="Percentage">
+                <label class="col-md-2 radio-group"> האם היית מציג/ה את המועמד/ת בין כלל התלמידים שלמדת ב3 השנים האחרונות: </label>
+                <div class="col-md-8">
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='1' formControlName="studentAverage">
+                            <label for="UpTo90">מעל 90% מהתלמידים</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='2' formControlName="studentAverage">
+                            <label for="UpTo80">מעל 80% מהתלמידים אך לא 10% העליונים</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='3' formControlName="studentAverage">
+                            <label for="UpTo70"> מעל 70% מהתלמידים אך לא מה20% העליונים</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='4' formControlName="studentAverage">
+                            <label for="lessTo70">לא מעל 70% מהתלמידים</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group row " formGroupName="isExcellenceGuaranteed">
+                <label class="col-md-2 radio-group"> האם לדעתך עשוי/ה המועמד/ת לסיים את לימודי המ.א בהצטיינות? </label>
+                <div class="col-md-8">
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='1' formControlName="level">
+                            <label for="1">בהחלט כן</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='2' formControlName="level">
+                            <label for="1">מאוד ייתכן  </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='3' formControlName="level">
+                            <label for="1">ייתכן</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 radio-group">
+                        <div class="radio-group">
+                            <input type="radio" value='4' formControlName="level">
+                            <label for="1">לא</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row col-md-12">
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">כושר ניתוח ואינטגרציה</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">חשיבה מדעית שיטתית</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">יכולת לתכנן מחקר ולבצעו</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">מקוריות</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">כושר ביטוי</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">מוטיבציה</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">בשלות רגשית ויציבות</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">אמפתיה ורגישות לזולת</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">פתיחות לביקורת ולנקודת המבט של הזולת</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">אחריות והתנהגות אתית</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row col-md-12">
+                <label>מהי הערתך על כדאיות הקבלה של המועמד/ת למגמה מחקרית ולמגמה קלינית?</label>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">למגמה מחקרית/מסלול אישי</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">למגמה קלינית/טיפולית</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="control-label col-md-2">למגמה תעסוקתית-ארגונית</label>
+                    <input type="range" name="quantity" min="1" max="10" class="form-control col-md-6">
+                    <div class="form-group row col-md-4">
+                        <label class="control-label col-md-2">דרגת ביטחון</label>
+                        <input type="range" name="quantity" min="1" max="4" class="form-control col-md-3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row col-md-12">
+                <label class="control-label col-md-2">אנא כתב/י את חוות דעתך על המועמד/ת, תוך כדי הדגשת תכונותיו/תכונותיה הייחודיות. נודה לך אם תתיחס/י לנקודות חוזק או נקודות חולשה של המועמד/ת הרלוונטיות ללימודי מ"א בכלל או ללימודים במגמות בהם מבקש/ת המועמד/ת ללמוד</label>
+                <textarea class="form-control col-md-8"></textarea>
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group row col-md-12">
+                    <label for="Date" class="control-label col-md-2">תאריך </label>
+                    <div class="col-md-4">
+                        <input type="date" formControlName="Date" id="Date" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label for="Institution" class="control-label col-md-2">מוסד </label>
+                    <div class="col-md-4">
+                        <input type="text" formControlName="Institution" id="Institution" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label for="FullName" class="control-label col-md-2">שם מלא </label>
+                    <div class="col-md-4">
+                        <input type="text" formControlName="FullName" id="FullName" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label for="Role" class="control-label col-md-2">תפקיד </label>
+                    <div class="col-md-4">
+                        <input type="text" formControlName="Role" id="Role" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label for="Sign" class="control-label col-md-2">חתימה </label>
+                    <div class="col-md-4">
+                        <input type="text" formControlName="Sign" id="Sign" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+        <button>שמור</button>
+
+
+    </form>
+
+</div>

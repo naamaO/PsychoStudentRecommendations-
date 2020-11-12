@@ -38,7 +38,7 @@ const routes: Routes = [
         path: 'recommendation',
         component: RecommendationComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.Recommender] }
+        data: { roles: [Role.Candidate] }
     },
     {
         path: 'login',
