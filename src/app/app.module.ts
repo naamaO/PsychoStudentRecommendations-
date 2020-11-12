@@ -18,7 +18,8 @@ import { RegisterComponent } from './register/register.component'
 import { CandidateComponent } from './candidate/candidate.component'
     ;
 import { OfficeUseComponent } from './office-use/office-use.component';
-import { RecommendationComponent } from './recommendation/recommendation.component';
+import { RecommendationComponent } from './recommendation/recommendation.component';;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule
-    ],
+,
+        BrowserAnimationsModule    ],
     declarations: [
         AppComponent,
         HomeComponent,

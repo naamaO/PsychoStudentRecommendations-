@@ -15,11 +15,6 @@
                              <option style="display:none" value="">בחירה </option>
                              <option *ngFor="let c of filteredprogramList(academyList[i].id)"  [disabled]="!academy.value" [value]="c.id">{{c.name}}</option></select>
 
-                        <!-- <option style="display:none" value="">Choose an option </option> -->
-
-                        <!-- <option *ngFor="let p of filteredprogramList(academyList[i].id)" [value]="p.id">{{p.name}}</option> -->
-
-
                     </div>
 
                 </div>
